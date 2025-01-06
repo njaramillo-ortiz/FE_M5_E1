@@ -21,6 +21,10 @@ En la vista de Doctores se puede filtrar por especialidad y también limpiar el 
 
 Se utiliza la instrucción `catch` para detectar errores, y mediante `useState` se almacena y muestra en pantalla dicho error de forma dinámica. Para ello se creó un componente `RequestError` que imprime el error en pantalla y además proporciona un botón para repetir el callback.
 
+## Optimización del Rendimiento al Omitir Efectos en useEffect
+
+Para evitar operaciones repetidas se utiliza `useEffect` sin agregar parámeros, o dicho de otra forma, con los corchetes vacíos []. Eso asegura que las peticiones iniciales mediante fetch no se repiten de manera innecesaria. Para futuras actualizaciones se utiliza una función asíncrona que, al recibir de manera los datos filtrados, los actualiza mediante `useState` para que dichos cambios se vean reflejados en la interfaz.
+
 ## Instrucciones de uso
 
 Requiere Node.js y npm instalados para su uso. Ejecutar el comando `npm run dev` desde la raíz del proyecto para ejecutarlo.

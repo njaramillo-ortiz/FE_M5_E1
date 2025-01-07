@@ -7,15 +7,15 @@ Se continúa con el proyecto iniciado en el Módulo 4.
 
 ## Implementación de Peticiones con useEffect y useState
 
-Se simula solicitar datos a una API REST utilizando `fetch` desde archivos .json incluidos en el proyecto, los cuales se llaman desde el hook `useEffect` y se utilizan de manera asíncrona. Los resultados recibidos de esta manera se almacenan usando `useState`, lo que permite reflejar estos cambios visualmente en la aplicación.
+Se simula solicitar datos a una API REST utilizando `axios` desde archivos .json incluidos en el proyecto, los cuales se llaman desde el hook `useEffect` y se utilizan de manera asíncrona. Los resultados recibidos de esta manera se almacenan usando `useState`, lo que permite reflejar estos cambios visualmente en la aplicación.
 
 ## Uso de Fetch API o Axios para el Consumo de la API
 
-Dado que ya se está utilizando `fetch` de manera exitosa, se opta por seguir usandolo y de esta manera también se evita añadir nuevas dependencias al proyecto.
+Para esta oportunidad se optó por cambiar de `fetch` a `axios`, debido a su simplicidad en cuanto a sintaxis e implementación.
 
 ## Peticiones Basadas en Eventos del Usuario
 
-En la vista de Doctores se puede filtrar por especialidad y también limpiar el filtro mediante un par de botones. Ambas operaciones utilizan `fetch` para reobtener los datos y, en el caso del filtro, el uso de un parámetro para seleccionar un subconjunto de los datos. Ambas operaciones pueden ser gatilladas por el usuario libremente.
+En la vista de Doctores se puede filtrar por especialidad y también limpiar el filtro mediante un par de botones. Ambas operaciones utilizan `axios` para reobtener los datos y, en el caso del filtro, el uso de un parámetro para seleccionar un subconjunto de los datos. Ambas operaciones pueden ser gatilladas por el usuario libremente.
 
 ## Manejo de Errores en Peticiones Asíncronas
 

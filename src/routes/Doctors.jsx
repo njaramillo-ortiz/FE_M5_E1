@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { DoctorCardGrid } from "../components/DoctorCardGrid";
 import { Button, Segment } from "semantic-ui-react";
 import { RequestError } from "../components/RequestError";
+import axios from "axios";
 
 export function Doctors()
 {
@@ -18,17 +19,16 @@ export function Doctors()
     {
         setError(null);
         setLoading(true);
-        await fetch('/src/data/doctors.json')
-            .then(result => result.json())
-            .then(data => {
+        await axios.get('/src/data/doctors.json')
+            .then(response => {
                 if(area == null || area == "")
                 {
-                    setDoctors(data)
+                    setDoctors(response.data)
                 }
                 else
                 {
                     let filteredData = [];
-                    data.forEach(d =>
+                    response.data.forEach(d =>
                     {
                         if(d.area === area)
                         {

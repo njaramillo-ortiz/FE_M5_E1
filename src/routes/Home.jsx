@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { ServicesList } from "../components/ServicesList";
 import { Image, Segment } from "semantic-ui-react";
 import { RequestError } from "../components/RequestError";
+import axios from "axios";
 
 export function Home()
 {
@@ -25,10 +26,9 @@ export function Home()
     async function getServices()
     {
         setLoading(true);
-        await fetch('/src/data/services.json')
-            .then(result => result.json())
-            .then(data => {
-                setServices(data);
+        await axios.get('/src/data/services.json')
+            .then(response => {
+                setServices(response.data);
                 setLoading(false);
             })
             .catch(err => {

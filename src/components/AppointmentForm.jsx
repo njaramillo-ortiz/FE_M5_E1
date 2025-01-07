@@ -4,6 +4,7 @@ import PortalModal from "./PortalModal";
 import { TextInput } from "./TextInput";
 import { DropdownInput } from "./DropdownInput";
 import { RequestError } from "./RequestError";
+import axios from "axios";
 
 export function AppointmentForm(props)
 {
@@ -42,17 +43,16 @@ export function AppointmentForm(props)
         setError(null);
         setLoading(true);
         setDoctor("");
-        await fetch('/src/data/doctors.json')
-            .then(result => result.json())
-            .then(data => {
+        await axios.get('/src/data/doctors.json')
+            .then(response => {
                 if(area == null || area == "")
                 {
-                    setDoctors(data)
+                    setDoctors(response.data)
                 }
                 else
                 {
                     let filteredData = [];
-                    data.forEach(d =>
+                    response.data.forEach(d =>
                     {
                         if(d.area === area)
                         {
@@ -72,10 +72,9 @@ export function AppointmentForm(props)
     {
         setError(null);
         setLoading(true);
-        await fetch('/src/data/services.json')
-            .then(result => result.json())
-            .then(data => {
-                setAreas(data);
+        await axios.get('/src/data/services.json')
+            .then(response => {
+                setAreas(response.data);
                 setLoading(false);
             })
             .catch(err => {
